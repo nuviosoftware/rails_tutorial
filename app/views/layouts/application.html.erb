@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+      <%= render 'shared/sidebar' %>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+     <%= render 'shared/navbar' %>
+
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+  </body>
+</html>
