@@ -1,0 +1,32 @@
+<h1 class="mt-4"><%= @profile.name %></h1>
+<p><b>Description:</b> <%= @profile.description %></p>
+<p><b>Email:</b> <%= @profile.email %></p>
+
+<br>
+
+<table class="table">   
+      <thead>   
+      <tr>   
+        <th scope="col">Title</th>   
+        <th scope="col">Description</th>   
+        <th scope="col">Posted</th>   
+        <th scope="col">Actions</th>   
+      </tr>   
+      </thead>   
+      <tbody>   
+      <% @profile.posts.order('posted_on DESC').each do |post| %>   
+          <tr>   
+            <td><%= post.title %></td>
+            <td><%= post.description %></td> 
+            <td><%= post.posted_on&.strftime("%-d %B %Y") %></td>     
+               <div>   
+               <td>   
+                <%= link_to 'Show', post_path(post) %>   
+                <%= link_to 'Edit', edit_post_path(post) %>   
+                <%= link_to 'Delete', post_path(post), method: :delete %>   
+              </div>   
+            </td>   
+          </tr>   
+      <% end %>   
+      </tbody>   
+    </table>   

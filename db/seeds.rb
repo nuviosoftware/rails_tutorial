@@ -13,14 +13,14 @@ ActiveRecord::Base.transaction do
   
   10.times do
     profile = Profile.new
-    profile.name = Faker::Name
+    profile.name = Faker::Name.first_name
     profile.email = Faker::Internet.email
-    profile.description = Faker::Quote
+    profile.description = Faker::Lorem.sentence
     profile.save
     5.times do
         post = Post.new
-        post.title = Faker::Science
-        post.description = Faker::Lorem
+        post.title = Faker::Science.scientist
+        post.description = Faker::Lorem.sentence
         post.profile_id = profile.id
         post.posted_on = Faker::Date.between(from: 3.months.ago, to: Date.today)
         post.save
